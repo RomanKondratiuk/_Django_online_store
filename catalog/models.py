@@ -11,10 +11,9 @@ class Product(models.Model):
     purchase_price = models.IntegerField()
     date_of_creation = models.DateField()
     last_modified_date = models.DateField()
-    created_at = models.CharField(**NULLABLE)
 
     def __str__(self):
-        print(f'{self.name} {self.description}')
+        return f'{self.name} {self.description}'
 
     class Meta:
         verbose_name = 'product'
@@ -25,10 +24,10 @@ class Product(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name='name ')
     description = models.TextField(verbose_name='description')
-    created_at = models.CharField(**NULLABLE)
+
 
     def __str__(self):
-        print(f'{self.name}')
+        return f'{self.name}'
 
     class Meta:
         verbose_name = 'category'
