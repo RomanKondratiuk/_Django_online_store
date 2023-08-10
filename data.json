@@ -1,0 +1,26 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 6,
+    "fields": {
+      "name": "phone",
+      "description": "this is device"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 7,
+    "fields": {
+      "name": "BMW",
+      "description": "this is car"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 8,
+    "fields": {
+      "name": "dog",
+      "description": "this is animal"
+    }
+  }
+]
