@@ -25,9 +25,8 @@ class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name='name ')
     description = models.TextField(verbose_name='description')
 
-
     def __str__(self):
-        return f'{self.name}'
+        return f'{self.name} {self.description}'
 
     class Meta:
         verbose_name = 'category'
