@@ -13,7 +13,11 @@ def contacts(request):
 
 
 def home(request):
-    return render(request, 'catalog/home.html')
+    products_list = Product.objects.all()
+    context = {
+        'object_list': products_list
+    }
+    return render(request, 'catalog/index.html', context)
 
 
 def products(request):
