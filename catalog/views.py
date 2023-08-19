@@ -15,7 +15,8 @@ def contacts(request):
 def base(request):
     products_list = Category.objects.all()
     context = {
-        'object_list': products_list
+        'object_list': products_list,
+        'title': 'Категории товаров'
     }
     return render(request, 'catalog/index.html', context)
 
@@ -23,7 +24,8 @@ def base(request):
 def products(request):
     products_list = Product.objects.all()
     context = {
-        'object_list': products_list
+        'object_list': products_list,
+        'title': 'Все товары'
     }
     return render(request, 'catalog/products.html', context)
 
