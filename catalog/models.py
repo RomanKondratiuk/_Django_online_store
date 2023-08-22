@@ -10,7 +10,7 @@ class Product(models.Model):
     category = models.TextField(verbose_name='category')
     purchase_price = models.IntegerField()
     date_of_creation = models.DateField()
-    last_modified_date =  models.DateField()
+    last_modified_date = models.DateField()
 
     def __str__(self):
         return f' {self.name}'
