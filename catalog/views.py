@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView
 
 from catalog.models import Product, Category
 
@@ -39,11 +39,3 @@ class ProductsListView(ListView):
 #     }
 #     return render(request, 'catalog/products.html', context)
 #
-
-
-# def index(request):
-#     context = {
-#         'object_list': Product.objects.all(),
-#         'title': 'Online store'
-#     }
-#     return render(request, 'catalog/index,html', context)
