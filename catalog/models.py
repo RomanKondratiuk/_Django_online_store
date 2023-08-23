@@ -32,3 +32,20 @@ class Category(models.Model):
         verbose_name = 'category'
         verbose_name_plural = 'categories'
         ordering = ('name',)
+
+
+class BlogPost(models.Model):
+    title = models.CharField(max_length=150, verbose_name='title')
+    slug = models.CharField(max_length=150, verbose_name='slug')
+    content = models.TextField(verbose_name='content')
+    image = models.ImageField(upload_to='image/', verbose_name='image', **NULLABLE)
+    date_of_creation = models.DateField(verbose_name='date_of_creation')
+    sign_publication = models.BooleanField(verbose_name='sign_publication')
+    number_of_views = models.IntegerField(verbose_name='number_of_views')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Blog Post'
+        verbose_name_plural = 'Blog Posts'
