@@ -13,7 +13,7 @@ class Product(models.Model):
     last_modified_date = models.DateField()
 
     def __str__(self):
-        return f' {self.name}'
+        return f' {self.name} '
 
     class Meta:
         verbose_name = 'product'
@@ -49,4 +49,3 @@ class BlogPost(models.Model):
     class Meta:
         verbose_name = 'Blog Post'
         verbose_name_plural = 'Blog Posts'
-
