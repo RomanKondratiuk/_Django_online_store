@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DetailView, UpdateView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 from catalog.models import Product, Category, BlogPost
 
@@ -20,7 +20,7 @@ def category_product(request, pk):
         'object_list': Product.objects.filter(id=pk),
         'title': f'Товар категории - {category_item.name}'
     }
-    return render(request, 'catalog/product.html', context)
+    return render(request, 'catalog/products.html', context)
 
 
 class CategoryListView(ListView):
@@ -49,4 +49,9 @@ class BlogpostUpdateView(UpdateView):
     model = BlogPost
     fields = ('title', 'slug', 'content', 'image', 'date_of_creation', 'sign_publication', 'number_of_views',)
     # fields = ('title',)
+    success_url = reverse_lazy('catalog:products')
+
+
+class BlogpostDeleteView(DeleteView):
+    model = Product
     success_url = reverse_lazy('catalog:products')
