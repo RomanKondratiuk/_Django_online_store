@@ -41,14 +41,13 @@ class ProductDetailView(DetailView):
 class BlogpostCreateView(CreateView):
     model = BlogPost
     fields = ('title', 'slug', 'content', 'image', 'date_of_creation', 'sign_publication', 'number_of_views',)
-    # fields = ('title',)
+    # fields = ('title', 'content', 'image',)
     success_url = reverse_lazy('catalog:products')
 
 
 class BlogpostUpdateView(UpdateView):
     model = BlogPost
     fields = ('title', 'slug', 'content', 'image', 'date_of_creation', 'sign_publication', 'number_of_views',)
-    # fields = ('title',)
     success_url = reverse_lazy('catalog:products')
 
 

@@ -1,21 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-<a class="p-2 btn btn-outline-primary" href="{% url 'catalog:base'%}">Категории товаров</a><br>
-<a class="p-2 btn btn-outline-primary" href="{% url 'catalog:products'%}">Каталог товаров</a><br>
-<a class="p-2 btn btn-outline-primary" href="{% url 'catalog:contacts'%}">Контакты</a><br>
-<a class="p-2 btn btn-outline-primary" href="{% url 'catalog:create_products'%}">Добавить товар</a><br>
-<h1>Hi, Users!</h1>
-<form method="post">
-    {% csrf_token %}<br>
-    <input type="text" name="name" placeholder="ваше имя"/><br>
-    <input type="email" name="email" placeholder="ваш email"/><br>
-    <textarea name="message" placeholder="ваше сообщение"></textarea><br>
-    <input type="submit" value="Отправить"/>
-</form>
-</body>
-</html>
+{% extends 'catalog/base.html' %}
+<!--<!DOCTYPE html>-->
+{{ '<' }}{{ '!DOCTYPE html>' }}
+{% load my_tags %}
+{% block content %}
+
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title></title>
+        </head>
+        <body>
+<!--        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:base'%}">Категории товаров</a><br>-->
+<!--        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:products'%}">Каталог товаров</a><br>-->
+<!--        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:contacts'%}">Контакты</a><br>-->
+<!--        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:create_products'%}">Добавить товар</a><br>-->
+        <h1>Hi, Users!</h1>
+        <form method="post">
+            {% csrf_token %}<br>
+            <div class="row">
+                <div class="col-12 mb-5">
+                    <input type="text" name="name" placeholder="ваше имя"/><br>
+                    <input type="email" name="email" placeholder="ваш email"/><br>
+                    <textarea name="message" placeholder="ваше сообщение"></textarea><br>
+                    <input type="submit" value="Отправить"/>
+                </div>
+            </div>
+        </form>
+        </body>
+        </html>
+{% endblock %}
