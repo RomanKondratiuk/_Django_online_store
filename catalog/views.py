@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
-from catalog.models import Product, Category, BlogPost
+from catalog.models import Product, Category
 
 
 def contacts(request):
