@@ -13,7 +13,7 @@ urlpatterns = [
     # path('<int:pk>/products', category_product, name='category_product'),
     path('<int:pk>', ProductDetailView.as_view(), name='view_product'),
     path('create/', ProductCreateView.as_view(), name='create_products'),
-    path('edit/<int:pk>/', ProductUpdateView.as_view(), name='update_products'),
+    path('edit/<int:pk>/', ProductUpdateView.as_view(), name='edit'),
     path('delete/<int:pk>/', ProductDeleteView.as_view(), name='delete_products'),
 
 
