@@ -8,9 +8,9 @@
                     <div class="card_body">
                         <form method="post">
                             {% csrf_token%}
-                            <p>Хотите удалить продукт "{{ object.name }}"?</p>
-                            <button type="submit" class="btn btn-danger">Подтвердить</button>
-                            <a href="{% url 'catalog:products' %}" class="btn btn-warning">Отменить</a>
+                            <p>Are you sure you want to delete the entry "{{ object.title }}" ?</p>
+                            <button type="submit" class="btn btn-danger">Confirm</button>
+                            <a href="{% url 'blogpost:list' %}" class="btn btn-warning">Cancel</a>
                         </form>
                     </div>
                 </div>
