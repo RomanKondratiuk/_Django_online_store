@@ -9,7 +9,13 @@
                         <form method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form.as_p}}
-                            <button type="submit" class="btn btn-success ">Создать</button>
+                            <button type="submit" class="btn btn-success ">
+                                {% if object %}
+                                    Save
+                                {% else %}
+                                    Create
+                                {% endif %}
+                            </button>
                         </form>
                     </div>
                 </div>
