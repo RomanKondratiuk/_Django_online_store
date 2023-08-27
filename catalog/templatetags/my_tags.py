@@ -7,5 +7,4 @@ register = template.Library()
 def mymedia(value):
     if value:
         return f'/media/{value}'
-
     return '#'

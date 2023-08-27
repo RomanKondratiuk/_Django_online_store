@@ -38,19 +38,19 @@ class ProductDetailView(DetailView):
     template_name = 'catalog/view_product.html'
 
 
-class BlogpostCreateView(CreateView):
-    model = BlogPost
-    fields = ('title', 'slug', 'content', 'image', 'date_of_creation', 'sign_publication', 'number_of_views',)
-    # fields = ('title', 'content', 'image',)
+class ProductCreateView(CreateView):
+    model = Product
+    # fields = ('title', 'slug', 'content', 'image', 'date_of_creation', 'sign_publication', 'number_of_views',)
+    fields = ('name', 'description', 'image', 'category', 'purchase_price', 'date_of_creation', 'last_modified_date')
     success_url = reverse_lazy('catalog:products')
 
 
-class BlogpostUpdateView(UpdateView):
-    model = BlogPost
-    fields = ('title', 'slug', 'content', 'image', 'date_of_creation', 'sign_publication', 'number_of_views',)
+class ProductUpdateView(UpdateView):
+    model = Product
+    fields = ('name', 'description', 'image', 'category', 'purchase_price', 'date_of_creation', 'last_modified_date')
     success_url = reverse_lazy('catalog:products')
 
 
-class BlogpostDeleteView(DeleteView):
+class ProductDeleteView(DeleteView):
     model = Product
     success_url = reverse_lazy('catalog:products')
