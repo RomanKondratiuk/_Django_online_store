@@ -20,12 +20,17 @@ class BlogpostUpdateView(UpdateView):
 class BlogPostListView(ListView):
     model = BlogPost
 
+    def get_queryset(self, *args, **kwargs):
+        queryset = super().get_queryset(*args, **kwargs)
+        queryset = queryset.filter(sign_publication=True)
+        return queryset
+
 
 class BlogPostDetailView(DetailView):
     model = BlogPost
 
     def get_object(self, queryset=None):
-        self.object = super().get_object()
+        self.object = super().get_object(queryset)
         self.object.number_of_views += 1
         self.object.save()
         return self.object
