@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
+from catalog.forms import ProductForm
 from catalog.models import Product, Category
+
 
 
 def contacts(request):
@@ -14,13 +16,13 @@ def contacts(request):
     return render(request, 'catalog/contacts.html')
 
 
-def category_product(request, pk):
-    category_item = Product.objects.get(pk=pk)
-    context = {
-        'object_list': Product.objects.filter(id=pk),
-        'title': f'Товар категории - {category_item.name}'
-    }
-    return render(request, 'catalog/products.html', context)
+# def category_product(request, pk):
+#     category_item = Product.objects.get(pk=pk)
+#     context = {
+#         'object_list': Product.objects.filter(id=pk),
+#         'title': f'Товар категории - {category_item.name}'
+#     }
+#     return render(request, 'catalog/products.html', context)
 
 
 class CategoryListView(ListView):
@@ -41,13 +43,15 @@ class ProductDetailView(DetailView):
 class ProductCreateView(CreateView):
     model = Product
     # fields = ('title', 'slug', 'content', 'image', 'date_of_creation', 'sign_publication', 'number_of_views',)
-    fields = ('name', 'description', 'image', 'category', 'purchase_price', 'date_of_creation', 'last_modified_date')
+    # fields = ('name', 'description', 'image', 'category', 'purchase_price', 'date_of_creation', 'last_modified_date')
+    form_class = ProductForm
     success_url = reverse_lazy('catalog:products')
 
 
 class ProductUpdateView(UpdateView):
     model = Product
-    fields = ('name', 'description', 'image', 'category', 'purchase_price', 'date_of_creation', 'last_modified_date')
+    # fields = ('name', 'description', 'image', 'category', 'purchase_price', 'date_of_creation', 'last_modified_date')
+    form_class = ProductForm
     success_url = reverse_lazy('catalog:products')
 
 

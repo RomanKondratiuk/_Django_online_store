@@ -4,13 +4,13 @@ NULLABLE = {'blank': True, 'null': True}
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=100, verbose_name='name ')
+    name = models.CharField(max_length=100, verbose_name='name')
     description = models.TextField(verbose_name='description')
     image = models.ImageField(upload_to='image/', verbose_name='image', **NULLABLE)
     category = models.TextField(verbose_name='category')
-    purchase_price = models.IntegerField()
-    date_of_creation = models.DateField()
-    last_modified_date = models.DateField()
+    purchase_price = models.IntegerField(**NULLABLE)
+    date_of_creation = models.DateField(**NULLABLE)
+    last_modified_date = models.DateField(**NULLABLE)
 
     def __str__(self):
         return f' {self.name} '
