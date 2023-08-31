@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'catalog',
     'blogpost',
+    'version',
 
 
 ]

@@ -53,12 +53,15 @@
         <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:products'%}">Product catalogs</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:contacts'%}">Contacts</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:create_products'%}">Add product</a>
-        <a class="p-2 btn btn-outline-primary" href="{% url 'blogpost:create' %}">Add entry</a>
-        <a class="p-2 btn btn-outline-primary" href="{% url 'blogpost:list' %}">Catalog records</a>
+        <a class="p-2 btn btn-outline-success" href="{% url 'blogpost:create' %}">Add entry</a>
+        <a class="p-2 btn btn-outline-success" href="{% url 'blogpost:list' %}">Catalog records</a>
+
 
 
     </nav>
 </div>
+        <a class="p-2 btn btn-outline-warning" href="{% url 'version:create_version' %}">Create version</a>
+        <a class="p-2 btn btn-outline-warning" href="{% url 'version:version_list' %}">Version list</a>
 
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h1 class="display-4">Online store</h1>

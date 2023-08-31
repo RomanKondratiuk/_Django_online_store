@@ -12,14 +12,9 @@ class BlogPost(models.Model):
     sign_publication = models.BooleanField(default=True, verbose_name='признак публикации')
     number_of_views = models.IntegerField(default=0, verbose_name='количество просмотров')
 
-
-
     def __str__(self):
         return self.title
 
     class Meta:
         verbose_name = 'Blog Post'
         verbose_name_plural = 'Blog Posts'
-
-
-

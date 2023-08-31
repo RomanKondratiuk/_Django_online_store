@@ -1,0 +1,39 @@
+{% extends 'catalog/base.html' %}
+
+{% block content%}
+    <div class="col-12">
+
+        <div class="row">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card_title">
+                            Version Information
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <tr>
+                                <td>Product</td>
+                                <td>{{object.product}}</td>
+                            </tr>
+                            <tr>
+                                <td>Version number</td>
+                                <td>{{object.version_number}}</td>
+                            </tr>
+                            <tr>
+                                <td>Version name</td>
+                                <td>{{object.version_name}}</td>
+                            </tr>
+                            <tr>
+                                <td>Version status</td>
+                                <td>{{object.version_status}}</td>
+                            </tr>
+                        </table>
+                        <a class="btn btn-sm btn-outline-primary" href="{% url 'version:version_list' %}">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock%}
