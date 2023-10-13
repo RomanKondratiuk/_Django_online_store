@@ -1,0 +1,91 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "iPhone 12 Pro",
+      "description": "this is apple",
+      "image": "image/Apple_announce-iphone12pro_10132020_big.jpg.large_2x.jpeg",
+      "category": "device",
+      "purchase_price": 900,
+      "date_of_creation": "2021-08-17",
+      "last_modified_date": "2022-08-17"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "BMW M8",
+      "description": "this is very fast car",
+      "image": "image/2023-bmw-8-series-03-1643213321.jpeg",
+      "category": "car",
+      "purchase_price": 50000,
+      "date_of_creation": "2015-08-17",
+      "last_modified_date": "2016-08-17"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "lexus es 300",
+      "description": "this is car",
+      "image": "image/20LEGEH1.webp",
+      "category": "car",
+      "purchase_price": 7000,
+      "date_of_creation": "2014-08-17",
+      "last_modified_date": "2016-08-17"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "name": "sushi",
+      "description": "this is sushi",
+      "image": "image/images_d85RJLy.jpeg",
+      "category": "dish",
+      "purchase_price": 30,
+      "date_of_creation": "2023-08-10",
+      "last_modified_date": "2023-08-17"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 23,
+    "fields": {
+      "name": "test",
+      "description": "test",
+      "image": "image/images_x4pLXV8.jpeg",
+      "category": "tets",
+      "purchase_price": 2,
+      "date_of_creation": "2020-09-09",
+      "last_modified_date": "2023-09-08"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "car",
+      "description": "this is car"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "device",
+      "description": "this is gadget"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "name": "dish",
+      "description": "this is dishs"
+    }
+  }
+]

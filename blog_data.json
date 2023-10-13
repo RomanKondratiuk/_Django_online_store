@@ -1,0 +1,93 @@
+[
+  {
+    "model": "blogpost.blogpost",
+    "pk": 1,
+    "fields": {
+      "title": "test",
+      "slug": "test",
+      "content": "gfuytf",
+      "image": "image/20LEGEH1_tk3UniR.webp",
+      "date_of_creation": "2020-09-09",
+      "sign_publication": false,
+      "number_of_views": 17
+    }
+  },
+  {
+    "model": "blogpost.blogpost",
+    "pk": 4,
+    "fields": {
+      "title": "Bogema_2017",
+      "slug": "bogema2017",
+      "content": "dog",
+      "image": "image/IMG_2266_iP6GcuY.jpeg",
+      "date_of_creation": "2023-08-25",
+      "sign_publication": false,
+      "number_of_views": 16
+    }
+  },
+  {
+    "model": "blogpost.blogpost",
+    "pk": 8,
+    "fields": {
+      "title": "bogema",
+      "slug": "bogema",
+      "content": "dog",
+      "image": "image/IMG_2266_LbYFaQe.jpeg",
+      "date_of_creation": "2020-09-09",
+      "sign_publication": false,
+      "number_of_views": 2
+    }
+  },
+  {
+    "model": "blogpost.blogpost",
+    "pk": 9,
+    "fields": {
+      "title": "test",
+      "slug": "test",
+      "content": "fe2fewf",
+      "image": "image/20LEGEH1_MPXCX87.webp",
+      "date_of_creation": "2001-04-03",
+      "sign_publication": false,
+      "number_of_views": 0
+    }
+  },
+  {
+    "model": "blogpost.blogpost",
+    "pk": 10,
+    "fields": {
+      "title": "dog",
+      "slug": "dog",
+      "content": "this is dog",
+      "image": "image/IMG_0858_Cul0tDb.jpeg",
+      "date_of_creation": "2021-08-09",
+      "sign_publication": true,
+      "number_of_views": 0
+    }
+  },
+  {
+    "model": "blogpost.blogpost",
+    "pk": 11,
+    "fields": {
+      "title": "dog2",
+      "slug": "dog2",
+      "content": "dog2",
+      "image": "image/IMG_2266_quN6zjA.jpeg",
+      "date_of_creation": "2020-09-09",
+      "sign_publication": true,
+      "number_of_views": 7
+    }
+  },
+  {
+    "model": "blogpost.blogpost",
+    "pk": 16,
+    "fields": {
+      "title": "dog mama",
+      "slug": "dog-mama",
+      "content": "gfduytd",
+      "image": "image/IMG_0759_l4cudaF.jpeg",
+      "date_of_creation": "2021-08-09",
+      "sign_publication": true,
+      "number_of_views": 10
+    }
+  }
+]

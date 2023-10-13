@@ -1,13 +1,13 @@
 from django import forms
 
 from catalog.models import Product
+from version.models import Version
 
 
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
-        # fields = ('name', 'description', 'image', 'category', 'purchase_price', 'date_of_creation', 'last_modified_date')
 
     def clean_name(self):
         forbidden_words = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция',
@@ -30,3 +30,9 @@ class ProductForm(forms.ModelForm):
                 raise forms.ValidationError(f"Запрещенное слово '{word}' в описании продукта.")
 
         return description
+
+
+# class VersionForm(forms.ModelForm):
+#     class Meta:
+#         model = Version
+#         fields = ['version_number', 'version_name', 'version_status']
