@@ -13,9 +13,15 @@
                 <div class="col-sm-4 offset-md-1 py-4">
                     <h4 class="text-white">Contact</h4>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                        <li><a href="#" class="text-white">Like on Facebook</a></li>
-                        <li><a href="#" class="text-white">Email me</a></li>
+                        <li><a href="{% url 'catalog:base' %}" class="text-white">Main</a></li>
+                {% if user.is_authenticated %}
+                        <li><a href="{% url 'users:logout' %}" class="text-white">Logout</a></li>
+                        <li><a href="{% url 'users:profile' %}" class="text-white">Profile</a></li>
+                {% else %}
+                        <li><a href="{% url 'users:login' %}" class="text-white">Sign</a></li>
+                        <li><a href="{% url 'users:register' %}" class="text-white">Log in</a></li>
+
+                {% endif%}>
                     </ul>
                 </div>
             </div>
@@ -39,6 +45,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Skystore</title>
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
 </head>
 
 <body>
