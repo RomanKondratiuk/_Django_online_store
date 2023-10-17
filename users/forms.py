@@ -9,6 +9,13 @@ class UserRegisterForm(UserCreationForm):
         model = User
         fields = ('email', 'phone_number', 'country', 'avatar', 'password1', 'password2')
 
+        def save(self, commit=True):
+            user = super().save(commit=False)
+            user.generate_email_verification_token()
+            if commit:
+                user.save()
+            return user
+
 
 class UserProfileForm(UserChangeForm):
     class Meta:
