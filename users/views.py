@@ -14,20 +14,23 @@ from django.views.generic import CreateView, UpdateView
 from config import settings
 from users.forms import UserRegisterForm, UserProfileForm
 from users.models import User
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 
-class ConfirmEmailView(View):
-    def get(self, request, token):
-        User = get_user_model()
-        try:
-            user = User.objects.get(email_verification_token=token)
-            user.is_active = True
-            user.email_verification_token = None  # delete token
-            user.save()
-            messages.success(request, 'Your email has been successfully confirmed. You can now log in.')
-        except User.DoesNotExist:
-            messages.error(request, 'Invalid email verification token.')
-        return redirect('users:login')
+# class ConfirmEmailView(View):
+#     def get(self, request, token):
+#         User = get_user_model()
+#         try:
+#             user = User.objects.get(email_verification_token=token)
+#             user.is_active = True
+#             user.email_verification_token = None  # delete token
+#             user.save()
+#             messages.success(request, 'Your email has been successfully confirmed. You can now log in.')
+#         except User.DoesNotExist:
+#             messages.error(request, 'Invalid email verification token.')
+#         return redirect('users:login')
 
 
 # class RegisterView(CreateView):
@@ -63,37 +66,33 @@ class ConfirmEmailView(View):
 #         recipient_list = [user.email]
 #         send_mail(subject, message, from_email, recipient_list)
 
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-
 
 def send_verify_email_message(verification_url, recipient_email):
-    # Настройки SMTP сервера
+    # SMTP server settings
     smtp_host = 'smtp.mail.ru'
     smtp_port = 2525
-    smtp_user = 'roma.kondratiuk2001@mail.ru'
+    smtp_user = settings.EMAIL_HOST_USER
     smtp_password = 'ad8GfSyfvhZuqzu5fAX3'
 
-    # Создание письма
+    # Creating a letter
     msg = MIMEMultipart()
     msg['From'] = smtp_user
     msg['To'] = recipient_email
-    msg['Subject'] = 'Подтверждение адреса электронной почты'
+    msg['Subject'] = 'Confirmation email'
 
-    # Текст письма
-    email_content = f'Для подтверждения адреса перейдите по ссылке: {verification_url}'
+    # Text of the letter
+    email_content = f'To confirm your email, follow the following link: {verification_url}'
     msg.attach(MIMEText(email_content, 'plain'))
 
-    # Установка соединения с SMTP сервером
+    # Establishing a connection to an SMTP server
     server = smtplib.SMTP(smtp_host, smtp_port)
-    server.starttls()  # Используем TLS
+    server.starttls()  # use TLS
     server.login(smtp_user, smtp_password)
 
-    # Отправка письма
+    # Sending letter
     server.sendmail(smtp_user, recipient_email, msg.as_string())
 
-    # Закрытие соединения
+    # Closing a connection
     server.quit()
 
 

@@ -148,10 +148,10 @@ AUTH_USER_MODEL = 'users.User'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-# EMAIL_HOST = 'smtp.mail.ru'
-# EMAIL_PORT = 2525
-# EMAIL_HOST_USER = "roma.kondratiuk2001@mail.ru"
-# EMAIL_HOST_PASSWORD = "ad8GfSyfvhZuqzu5fAX3"
-# # EMAIL_HOST_PASSWORD = "HBtLuUHivhNerWdcU1cc"
-# EMAIL_USE_TLS = True
-# EMAIL_USE_SSL = False
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = "roma.kondratiuk2001@mail.ru"
+EMAIL_HOST_PASSWORD = "ad8GfSyfvhZuqzu5fAX3"
+# EMAIL_HOST_PASSWORD = "HBtLuUHivhNerWdcU1cc"
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
