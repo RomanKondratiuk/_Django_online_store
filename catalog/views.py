@@ -1,9 +1,11 @@
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 from catalog.forms import ProductForm
 from catalog.models import Product, Category
+from django.contrib.auth.decorators import login_required
 
 
 def contacts(request):
@@ -23,6 +25,10 @@ class CategoryListView(ListView):
 class ProductsListView(ListView):
     model = Product
     template_name = 'catalog/products.html'
+
+    def get_queryset(self):
+        # Фильтруем продукты так, чтобы возвращались только те, у которых владельцем является текущий пользователь
+        return Product.objects.filter(owner=self.request.user)
 
 
 class ProductDetailView(DetailView):

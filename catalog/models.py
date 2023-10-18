@@ -1,4 +1,7 @@
 from django.db import models
+from django.db.models import CASCADE
+
+from users.models import User
 
 NULLABLE = {'blank': True, 'null': True}
 
@@ -11,6 +14,8 @@ class Product(models.Model):
     purchase_price = models.IntegerField(**NULLABLE)
     date_of_creation = models.DateField(**NULLABLE)
     last_modified_date = models.DateField(**NULLABLE)
+
+    owner = models.ForeignKey(User, on_delete=CASCADE, **NULLABLE, verbose_name='owner')
 
     def __str__(self):
         return f' {self.name} '
