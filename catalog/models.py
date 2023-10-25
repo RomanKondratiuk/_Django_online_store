@@ -14,6 +14,7 @@ class Product(models.Model):
     purchase_price = models.IntegerField(**NULLABLE)
     date_of_creation = models.DateField(**NULLABLE)
     last_modified_date = models.DateField(**NULLABLE)
+    sign_publication = models.BooleanField(default=False, verbose_name='publication sign', **NULLABLE)
 
     owner = models.ForeignKey(User, on_delete=CASCADE, **NULLABLE, verbose_name='owner')
 
@@ -37,5 +38,3 @@ class Category(models.Model):
         verbose_name = 'category'
         verbose_name_plural = 'categories'
         ordering = ('name',)
-
-

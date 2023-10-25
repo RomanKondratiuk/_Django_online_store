@@ -1,4 +1,5 @@
-from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin, PermissionRequiredMixin
+from django.http import Http404
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
@@ -8,6 +9,7 @@ from catalog.models import Product, Category
 from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def contacts(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -17,28 +19,29 @@ def contacts(request):
     return render(request, 'catalog/contacts.html')
 
 
-class CategoryListView(ListView):
+class CategoryListView(LoginRequiredMixin, ListView):
     model = Category
     template_name = 'catalog/index.html'
 
 
-class ProductsListView(ListView):
+class ProductsListView(LoginRequiredMixin, ListView):
     model = Product
     template_name = 'catalog/products.html'
 
     def get_queryset(self):
-        # Фильтруем продукты так, чтобы возвращались только те, у которых владельцем является текущий пользователь
+        """Filter products so that only those whose owner is the current user are returned"""
         return Product.objects.filter(owner=self.request.user)
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
     template_name = 'catalog/view_product.html'
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
+    permission_required = 'catalog.add_product'
     success_url = reverse_lazy('catalog:products')
 
     def form_valid(self, form):
@@ -46,12 +49,19 @@ class ProductCreateView(CreateView):
         return super().form_valid(form)
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:products')
 
+    def get_object(self, queryset=None):
+        """checking that the user cannot open someone else's product"""
+        self.object = super().get_object(queryset)
+        if self.object.owner != self.request.user:
+            raise Http404
+        return self.object
 
-class ProductDeleteView(DeleteView):
+
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     success_url = reverse_lazy('catalog:products')

@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
@@ -6,7 +7,7 @@ from pytils.translit import slugify
 from blogpost.models import BlogPost
 
 
-class BlogpostCreateView(CreateView):
+class BlogpostCreateView(LoginRequiredMixin, CreateView):
     model = BlogPost
     fields = ('title', 'content', 'image', 'date_of_creation', 'sign_publication', 'number_of_views',)
     success_url = reverse_lazy('blogpost:list')
@@ -20,7 +21,7 @@ class BlogpostCreateView(CreateView):
             return super().form_valid(form)
 
 
-class BlogpostUpdateView(UpdateView):
+class BlogpostUpdateView(LoginRequiredMixin, UpdateView):
     model = BlogPost
     fields = ('title', 'content', 'image', 'date_of_creation', 'sign_publication', 'number_of_views',)
     # success_url = reverse_lazy('blogpost:list')
@@ -37,7 +38,7 @@ class BlogpostUpdateView(UpdateView):
             return super().form_valid(form)
 
 
-class BlogPostListView(ListView):
+class BlogPostListView(LoginRequiredMixin, ListView):
     model = BlogPost
 
     def get_queryset(self, *args, **kwargs):
@@ -47,7 +48,7 @@ class BlogPostListView(ListView):
         return queryset
 
 
-class BlogPostDetailView(DetailView):
+class BlogPostDetailView(LoginRequiredMixin, DetailView):
     model = BlogPost
 
     def get_object(self, queryset=None):
@@ -57,7 +58,7 @@ class BlogPostDetailView(DetailView):
         return self.object
 
 
-class BlogPostDeleteView(DeleteView):
+class BlogPostDeleteView(LoginRequiredMixin, DeleteView):
     model = BlogPost
     success_url = reverse_lazy('blogpost:list')
 

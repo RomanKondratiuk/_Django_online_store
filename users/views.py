@@ -1,4 +1,6 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import send_mail
@@ -66,10 +68,10 @@ class EmailVerify(View):
         return user
 
 
-class ProfileView(UpdateView):
+class ProfileView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserProfileForm
-    success_url = reverse_lazy('users:profile')
+    success_url = reverse_lazy('catalog:base')
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -79,6 +81,7 @@ class MyPasswordResetView(PasswordResetView):
     template_name = 'users/password_reset_form.html'
 
 
+@login_required
 def generate_temporary_password(user):
     length = 10
     characters = string.ascii_letters + string.digits
